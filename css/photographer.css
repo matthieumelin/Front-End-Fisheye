@@ -2,10 +2,29 @@
     display: none;
 }
 
-.photograph-header {
+.photograph_header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.photograph_header_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.photograph_header_content_name {
+    color: #D3573C;
+    font-weight: 400;
+    font-size: 64px;
+    margin: 0;
+}
+
+.photograph_header_content_location {
+    color: #901C1C;
 }
 
 .contact_button {
