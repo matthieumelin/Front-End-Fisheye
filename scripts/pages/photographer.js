@@ -97,46 +97,88 @@ async function init() {
       filters.appendChild(select);
     }
 
+    // Fonction permettant de créer les images du photographe
     async function createPictures() {
+      const medias = getMedias(photograph);
       const section = document.createElement("section");
-      const row = document.createElement("div");
-      const card = document.createElement("div");
-      const cardImage = document.createElement("img");
-      const cardAbout = document.createElement("div");
-      const cardAboutName = document.createElement("p");
-      const cardAboutLikes = document.createElement("div");
-      const cardAboutLikesCount = document.createElement("span");
-      const cardAboutLikesIcon = document.createElement("i");
 
-      // Ajout des classes personnalisées sur chaque élément
       section.classList.add("pictures");
-      row.classList.add("pictures_row");
-      card.classList.add("pictures_card");
-      cardImage.classList.add("pictures_card_image");
-      cardAbout.classList.add("pictures_card_about");
-      cardAboutName.classList.add("pictures_card_about_name");
-      cardAboutLikes.classList.add("pictures_card_about_likes");
-      cardAboutLikesCount.classList.add("pictures_card_about_likes_count");
-      cardAboutLikesIcon.classList.add("fa-solid fa-heart pictures_card_about_likes_icon");
 
-      // Ajout de chaque attribut sur chaque élément
-      cardImage.setAttribute("src", "https://via.placeholder.com/1000");
-      cardAboutLikes.setAttribute("aria-label", "likes");
+      (await medias).medias.forEach((media) => {
+        // Création des cards pour chaque média
+        const card = document.createElement("div");
+        const cardImage = document.createElement(media.image ? "img" : "video");
+        const cardAbout = document.createElement("div");
+        const cardAboutName = document.createElement("p");
+        const cardAboutLikes = document.createElement("div");
+        const cardAboutLikesCount = document.createElement("span");
+        const cardAboutLikesIcon = document.createElement("span");
 
-      // Ajout des textes sur chaque élément
-      cardAboutName.textContent = "Arc-en-ciel";
-      cardAboutLikesCount.textContent = "12"
+        // Ajout des classes personnalisées sur chaque élément
+        card.classList.add("pictures_card");
+        cardImage.classList.add("pictures_card_image");
+        cardAbout.classList.add("pictures_card_about");
+        cardAboutName.classList.add("pictures_card_about_name");
+        cardAboutLikes.classList.add("pictures_card_about_likes");
+        cardAboutLikesCount.classList.add("pictures_card_about_likes_count");
+        cardAboutLikesIcon.classList.add("pictures_card_about_likes_icon");
 
-      // Ajout des éléments à la section pictures
-      section.appendChild(row);
-      card.appendChild(cardImage);
-      card.appendChild(cardAbout);
-      cardAbout.appendChild(cardAboutName);
-      cardAbout.appendChild(cardAboutLikes);
-      cardAboutLikes.appendChild(cardAboutLikesCount);
-      cardAboutLikes.appendChild(cardAboutLikesIcon);
-      row.appendChild(card);
+        // Ajout de chaque attribut sur chaque élément
+        cardImage.setAttribute(
+          "src",
+          `../assets/images/${photograph.name
+            .split(" ")[0]
+            .replace("-", " ")}/${!media.image ? media.video : media.image}`
+        );
+        cardAboutLikes.setAttribute("aria-label", "likes");
+
+        // Ajout des textes sur chaque élément
+        cardAboutName.textContent = media.title;
+        cardAboutLikesCount.textContent = media.likes;
+        cardAboutLikesIcon.textContent = "\u2764";
+
+        // Ajout des événements sur chaque élément
+        cardImage.addEventListener("click", () =>
+          console.log("card image click")
+        );
+        
+        const initialLikes = Number(cardAboutLikesCount.textContent);
+        cardAboutLikesIcon.addEventListener("click", () => like(initialLikes, cardAboutLikesCount));
+
+        // Ajout des éléments à la section pictures
+        card.appendChild(cardImage);
+        card.appendChild(cardAbout);
+        cardAbout.appendChild(cardAboutName);
+        cardAbout.appendChild(cardAboutLikes);
+        cardAboutLikes.appendChild(cardAboutLikesCount);
+        cardAboutLikes.appendChild(cardAboutLikesIcon);
+        section.appendChild(card);
+      });
+
       main.appendChild(section);
+
+      // Fonction permettant de mettre un j'aime sur une photo
+      async function like(initialLikes, currentCount) {
+        let currentLikes = Number(currentCount.textContent);
+        if (currentLikes != initialLikes+1) {
+          currentCount.textContent = currentLikes + 1;
+        } else {
+          currentCount.textContent = currentLikes - 1;
+        }
+      }
+    }
+
+    // Récupération de tous les médias du photographe
+    async function getMedias(photograph) {
+      const data = await fetch("../../data/photographers.json").then(
+        (response) => response.json()
+      );
+      const medias = data.media.filter(
+        (media) => media.photographerId === photograph.id
+      );
+      return {
+        medias: [...medias],
+      };
     }
   }
 }
