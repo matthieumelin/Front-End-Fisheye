@@ -6,9 +6,10 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
-    padding: 20px;
+    padding: 20px 30px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .photograph_header_content {
@@ -25,6 +26,20 @@
 
 .photograph_header_content_location {
     color: #901C1C;
+    font-size: 22px;
+    margin: 0;
+}
+
+.photograph_header_content_tagline {
+    color: #525252;
+    font-size: 18px;
+}
+
+.photograph_header_content_picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .contact_button {

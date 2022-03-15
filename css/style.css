@@ -58,6 +58,7 @@ h1 {
     border-radius: 100%;
     margin: 0 auto;
     display: block;
+    object-fit: cover;
 }
 
 .photographer_location {
