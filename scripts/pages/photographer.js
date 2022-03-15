@@ -141,9 +141,11 @@ async function init() {
         cardImage.addEventListener("click", () =>
           console.log("card image click")
         );
-        
+
         const initialLikes = Number(cardAboutLikesCount.textContent);
-        cardAboutLikesIcon.addEventListener("click", () => like(initialLikes, cardAboutLikesCount));
+        cardAboutLikesIcon.addEventListener("click", () =>
+          like(initialLikes, cardAboutLikesCount)
+        );
 
         // Ajout des éléments à la section pictures
         card.appendChild(cardImage);
@@ -160,11 +162,10 @@ async function init() {
       // Fonction permettant de mettre un j'aime sur une photo
       async function like(initialLikes, currentCount) {
         let currentLikes = Number(currentCount.textContent);
-        if (currentLikes != initialLikes+1) {
-          currentCount.textContent = currentLikes + 1;
-        } else {
-          currentCount.textContent = currentLikes - 1;
-        }
+        currentCount.textContent =
+          currentLikes != initialLikes + 1
+            ? currentLikes + 1
+            : currentLikes - 1;
       }
     }
 
