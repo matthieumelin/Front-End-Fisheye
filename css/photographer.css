@@ -1,110 +1,182 @@
-#contact_modal {
-    display: none;
+.filters {
+    margin: 30px auto;
+    width: 90%;
 }
 
-.photograph_header {
-    background-color: #FAFAFA;
+.pictures {
+    margin: 60px auto;
+    width: 90%;
+}
+
+.pictures_row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.pictures_card {
+    width: 350px;
     height: 300px;
-    margin: 0 100px;
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
-.photograph_header_content {
-    display: flex;
-    flex-direction: column;
-}
-
-.photograph_header_content_name {
-    color: #D3573C;
-    font-weight: 400;
-    font-size: 64px;
-    margin: 0;
-}
-
-.photograph_header_content_location {
-    color: #901C1C;
-    font-size: 22px;
-    margin: 0;
-}
-
-.photograph_header_content_tagline {
-    color: #525252;
-    font-size: 18px;
-}
-
-.photograph_header_content_picture {
-    height: 200px;
-    width: 200px;
-    border-radius: 100%;
+.pictures_card_image {
+    border-radius: 5px;
+    max-width: 100%;
+    display: block;
     object-fit: cover;
 }
 
+.pictures_card_about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pictures_card_about_likes {
+    font-size: 24px;
+    font-weight: 500;
+    color: #901C1C;
+}
+
+.pictures_card_about_likes_icon {
+    color: #901C1C;
+}
+
+#contact_modal {
+  display: none;
+}
+
+.photograph_header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.photograph_header_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.photograph_header_content_name {
+  color: #d3573c;
+  font-weight: 400;
+  font-size: 64px;
+  margin: 0;
+}
+
+.photograph_header_content_location {
+  color: #901c1c;
+  font-size: 22px;
+  margin: 0;
+}
+
+.photograph_header_content_tagline {
+  color: #525252;
+  font-size: 18px;
+}
+
+.photograph_header_content_picture {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+.filters {
+  display: flex;
+}
+
+.filters_title {
+    font-weight: 700;
+}
+
+.filters_select {
+  border: none;
+  background: #901c1c;
+  color: #fff;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  outline: none;
+  border-radius: 5px;
+  margin: 0 0 0 15px;
+  padding: 15px;
+}
+
+.filters_select_option {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  font-family: inherit;
+  padding: 15px;
+  font-weight: 700;
+  font-size: 18px;
 }
