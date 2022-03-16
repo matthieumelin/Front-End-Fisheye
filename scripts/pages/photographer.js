@@ -69,22 +69,12 @@ const init = async () => {
 
   // Fonction permettant de créer les informations en bas à droite
   const createInfos = async () => {
-    const infos = document.createElement("div");
-    const infosLikes = document.createElement("p");
-    const infosPrice = document.createElement("p");
-
-    // Ajout des classes personnalisées sur chaque élément
-    infos.classList.add("photograph_infos");
-    infosLikes.classList.add("photograph_infos_likes");
-    infosPrice.classList.add("photograph_infos_price");
+    const infosLikes = document.querySelector(".photograph_infos_likes");
+    const infosPrice = document.querySelector(".photograph_infos_price");
 
     // Ajout des textes sur chaque élément
     infosLikes.textContent = `${globalLikes} \u2764`;
     infosPrice.textContent = `${photograph.price}€ / heure`;
-
-    infos.appendChild(infosLikes);
-    infos.appendChild(infosPrice);
-    main.appendChild(infos);
   };
 
   // Fonction permettant de créer les filtres
@@ -135,7 +125,9 @@ const init = async () => {
   const createPictures = async (filter) => {
     const section = document.querySelector(".pictures");
     if (section) {
+      // Les anciens éléments sont supprimés pour pouvoir être recréer.
       section.innerHTML = "";
+
       (await medias).medias
       .sort((a, b) => filter === "Popularité" ? b.likes - a.likes : filter === "Date" ? new Date(b.date) - new Date(a.date) : a.title.localeCompare(b.title))
         .forEach((media) => {
@@ -174,9 +166,7 @@ const init = async () => {
           cardAboutLikesIcon.textContent = "\u2764";
 
           // Ajout des événements sur chaque élément
-          cardImage.addEventListener("click", () =>
-            console.log("card image click")
-          );
+          cardImage.addEventListener("click", () => openLightBox(medias, photograph, media));
 
           const initialLikes = Number(cardAboutLikesCount.textContent);
           cardAboutLikesIcon.addEventListener("click", () =>
