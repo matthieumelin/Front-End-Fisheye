@@ -179,12 +179,19 @@ const init = async () => {
           cardAbout.setAttribute("aria-hidden", true);
           cardAboutLikes.setAttribute("aria-label", "Nombre de likes");
           cardImage.setAttribute("tabindex", 1);
+          cardImage.setAttribute("aria-label", media.title);
           cardImage.setAttribute("role", "img");
 
           cardAboutName.textContent = media.title;
           cardAboutLikesCount.textContent = media.likes;
           cardAboutLikesIcon.textContent = "\u2764";
 
+          cardImage.addEventListener("keydown", (event) => {
+            const key = event.key;
+            if (key === "Enter") {
+              openLightBox(medias, photograph, media);
+            }
+          });
           cardImage.addEventListener("click", () =>
             openLightBox(medias, photograph, media)
           );
