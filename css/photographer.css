@@ -241,53 +241,79 @@ body {
 .modal {
     border-radius: 5px;
     background-color: #db8876;
-    width: 50%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.modal header {
+.modal_header {
     justify-content: space-between;
     width: 100%;
+    display: flex;
 }
 
-.modal header img {
+.modal_header_close {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal_header_title {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    white-space: pre-wrap;
+    margin: 0;
 }
 
 .form {
-    display: flex;
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
-.form label {
+.form_label {
     color: #312e2e;
     font-size: 36px;
+    margin: 0 0 30px 0;
 }
 
-.form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+.form_data {
+    margin: 30px 0;
 }
 
-.form input {
+.form_input {
     width: 100%;
-    height: 68px;
+    box-sizing: border-box;
     border: none;
     border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    padding: 30px 20px;
+}
+
+.form_data[data-error-visible=true] .form_input,
+.form_data[data-error-visible=true] .form_textarea {
+    border: 1px solid red;
+}
+
+.form_textarea {
+    min-height: 300px;
+    width: 100% !important;
+    box-sizing: border-box;
+    resize: horizontal;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    padding: 30px 20px;
+    font-family: inherit;
+}
+
+.error {
+    color: red;
+    display: none;
+    margin: 10px 0 0 0;
 }
