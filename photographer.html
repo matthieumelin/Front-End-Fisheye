@@ -27,15 +27,18 @@
         </div>
     </main>
     <div id="lightbox" aria-label="image closeup view">
-        <div class="lightbox_content">
-            <button id="lightbox_previous" class="lightbox_content_arrow" aria-label="Média précedent">❮</button>
-            <div class="ligthbox_content_media_container">
-                <img class="ligthbox_content_media_container_media">
-                <p class="ligthbox_content_media_container_media_title"></p>
+        <div class="lightbox_container">
+            <div class="lightbox_content">
+                <button id="lightbox_previous" class="lightbox_content_arrow" aria-label="Média précedent">❮</button>
+                <div class="ligthbox_content_media_container">
+                    <p class="ligthbox_content_media_container_media_title"></p>
+                </div>
+                <div class="lightbox_content_column">
+                    <img id="lightbox_close" src="./assets/icons/close.svg" class="lightbox_content_close" alt="Fermer la lightbox" aria-label="Fermer la lightbox">
+                    <button id="lightbox_next" class="lightbox_content_arrow" aria-label="Média suivant">❯</button>
+                </div>
             </div>
-            <button id="lightbox_next" class="lightbox_content_arrow" aria-label="Média suivant">❯</button>
         </div>
-        <img src="./assets/icons/close.svg" class="lightbox_content_close" alt="Fermer la lightbox" aria-label="Fermer la lightbox">
     </div>
     <div id="contact_modal">
         <div class="modal">
@@ -43,8 +46,8 @@
                 <h2>Contactez-moi</h2>
                 <img src="assets/icons/close.svg" onclick="closeModal()" />
             </header>
-            <form>
-                <div>
+            <form class="form">
+                <div class="form_data">
                     <label>Prénom</label>
                     <input />
                 </div>

@@ -1,9 +1,16 @@
 // Fonction lors du chargement de la page
 const init = async () => {
   const id = Number(new URLSearchParams(location.search).get("id"));
-  const photograph = (await getPhotographers()).photographers.filter(
+  const photographers = getPhotographers();
+  const photograph = (await photographers).photographers.filter(
     (data) => data && data.id === id
   )[0];
+
+  // Si le photographe n'existe pas, retour à l'accueil
+  if (!photograph) {
+    location.assign("/");
+  }
+
   // Récupération de tous les médias
   const medias = getMedias(photograph);
   // Likes global
@@ -110,7 +117,9 @@ const init = async () => {
     title.setAttribute("for", select.className);
 
     // Ajout des événements sur chaque élément
-    select.addEventListener("change", (event) => createPictures(event.target.value));
+    select.addEventListener("change", (event) =>
+      createPictures(event.target.value)
+    );
 
     // Ajout des textes sur chaque élément
     title.textContent = "Trier par";
@@ -121,6 +130,17 @@ const init = async () => {
     filters.appendChild(select);
   };
 
+  // Fonction permettant de mettre un j'aime sur une photo
+  const like = async (currentLikes, count) => {
+    const photographInfosLike = document.querySelector(
+      ".photograph_infos_likes"
+    );
+    count.textContent = currentLikes;
+    if (photographInfosLike) {
+      photographInfosLike.textContent = `${globalLikes+=1} \u2764`;
+    }
+  };
+
   // Fonction permettant de créer les images du photographe
   const createPictures = async (filter) => {
     const section = document.querySelector(".pictures");
@@ -129,7 +149,13 @@ const init = async () => {
       section.innerHTML = "";
 
       (await medias).medias
-      .sort((a, b) => filter === "Popularité" ? b.likes - a.likes : filter === "Date" ? new Date(b.date) - new Date(a.date) : a.title.localeCompare(b.title))
+        .sort((a, b) =>
+          filter === "Popularité"
+            ? b.likes - a.likes
+            : filter === "Date"
+            ? new Date(b.date) - new Date(a.date)
+            : a.title.localeCompare(b.title)
+        )
         .forEach((media) => {
           // Création des cards pour chaque média
           const card = document.createElement("div");
@@ -166,12 +192,13 @@ const init = async () => {
           cardAboutLikesIcon.textContent = "\u2764";
 
           // Ajout des événements sur chaque élément
-          cardImage.addEventListener("click", () => openLightBox(medias, photograph, media));
-
-          const initialLikes = Number(cardAboutLikesCount.textContent);
-          cardAboutLikesIcon.addEventListener("click", () =>
-            like(initialLikes, cardAboutLikesCount)
+          cardImage.addEventListener("click", () =>
+            openLightBox(medias, photograph, media)
           );
+
+          cardAboutLikesIcon.addEventListener(
+            "click",
+            () => like(media.likes+=1, cardAboutLikesCount));
 
           // Ajout des éléments à la section pictures
           card.appendChild(cardImage);
@@ -185,24 +212,6 @@ const init = async () => {
 
       main.appendChild(section);
     }
-
-    // Fonction permettant de mettre un j'aime sur une photo
-    const like = async (initialLikes, currentCount) => {
-      let currentLikes = Number(currentCount.textContent);
-      const photographInfosLike = document.querySelector(
-        ".photograph_infos_likes"
-      );
-      if (currentLikes != initialLikes + 1) {
-        currentCount.textContent = currentLikes + 1;
-        globalLikes += 1;
-      } else {
-        currentCount.textContent = currentLikes - 1;
-        globalLikes -= 1;
-      }
-      if (photographInfosLike) {
-        photographInfosLike.textContent = `${globalLikes} \u2764`;
-      }
-    };
   };
 
   // Création des éléments
