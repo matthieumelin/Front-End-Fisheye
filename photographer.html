@@ -12,29 +12,29 @@
 
 <body>
     <header>
-        <a href="./index.html">
-            <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+        <a href="./index.html" tabindex="1">
+            <img src="assets/images/logo.png" class="logo" alt="Page d'accueil de Fisheye" />
         </a>
     </header>
     <main id="main">
         <div class="photograph_header">
             <div class="photograph_header_content"></div>
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button class="contact_button" onclick="displayModal()" role="button" aria-label="Contacter le photographe,." tabindex="1">Contactez-moi</button>
         </div>
-        <div class="photograph_infos">
-            <p class="photograph_infos_likes"></p>
-            <p class="photograph_infos_price"></p>
+        <div class="photograph_infos" aria-label="Informations sur la réputation et les tarifs du photographe,.">
+            <p class="photograph_infos_likes" aria-label="Nombre de like du photographe,."></p>
+            <p class="photograph_infos_price" aria-label="Prix du photographe par heure,."></p>
         </div>
     </main>
-    <div id="lightbox" aria-label="image closeup view">
+    <div id="lightbox" aria-label="Carousel des différents travaux du photographe,.">
         <div class="lightbox_container">
             <div class="lightbox_content">
                 <button id="lightbox_previous" class="lightbox_content_arrow" aria-label="Média précedent">❮</button>
                 <div class="ligthbox_content_media_container">
-                    <p class="ligthbox_content_media_container_media_title"></p>
+                    <p class="ligthbox_content_media_container_media_title" aria-label="Titre du média,"></p>
                 </div>
                 <div class="lightbox_content_column">
-                    <img id="lightbox_close" src="./assets/icons/close.svg" class="lightbox_content_close" alt="Fermer la lightbox" aria-label="Fermer la lightbox">
+                    <img id="lightbox_close" src="./assets/icons/close.svg" class="lightbox_content_close" alt="Fermer la lightbox" aria-label="picture">
                     <button id="lightbox_next" class="lightbox_content_arrow" aria-label="Média suivant">❯</button>
                 </div>
             </div>
@@ -48,26 +48,26 @@
             </div>
             <form id="contact_form" class="form" method="post">
                 <div class="form_data">
-                    <label for="first" class="form_label">Prénom</label>
-                    <input type="text" name="first" id="first" class="form_input">
+                    <label id="firstName-label" for="first" class="form_label">Prénom</label>
+                    <input type="text" name="first" id="first" class="form_input" tabindex="1" aria-required="true" aria-labelledby="firstName-label" aria-errormessage="Veuillez entrer 2 caractères ou plus pour le champ du prénom." aria-invalid="false">
                     <div id="first_error" class="error">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</div>
                 </div>
                 <div class="form_data">
-                    <label for="last" class="form_label">Nom</label>
-                    <input type="text" name="last" id="last" class="form_input">
+                    <label id="lastName-label" for="last" class="form_label">Nom</label>
+                    <input type="text" name="last" id="last" class="form_input" tabindex="1" aria-required="true" aria-labelledby="lastName-label" aria-errormessage="Veuillez entrer 2 caractères ou plus pour le champ du nom." aria-invalid="false">
                     <div id="last_error" class="error">Veuillez entrer 2 caractères ou plus pour le champ du nom.</div>
                 </div>
                 <div class="form_data">
-                    <label for="email" class="form_label">Email</label>
-                    <input type="email" name="email" id="email" class="form_input">
+                    <label id="email-label" for="email" class="form_label">Email</label>
+                    <input type="email" name="email" id="email" class="form_input" tabindex="1" aria-required="true" aria-labelledby="email-label" aria-errormessage="Vous devez entrer votre email." aria-invalid="false">
                     <div id="email_error" class="error">Vous devez entrer votre email.</div>
                 </div>
                 <div class="form_data">
-                    <label for="message" class="form_label">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="form_textarea"></textarea>
+                    <label id="message-label" for="message" class="form_label">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10" class="form_textarea" tabindex="1" aria-required="true" aria-labelledby="message-label" aria-errormessage="Vous devez entrer votre message" aria-invalid="false"></textarea>
                     <div id="message_error" class="error">Vous devez entrer votre message.</div>
                 </div>
-                <button type="submit" id="contact_button" class="contact_button">Envoyer</button>
+                <button type="submit" id="contact_button" class="contact_button" aria-label="Envoyer" tabindex="1" role="button">Envoyer</button>
             </form>
         </div>
     </div>

@@ -29,7 +29,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 0;
 }
 
 .photographer {
@@ -43,6 +43,7 @@ h1 {
 
 .photographer_header {
     cursor: pointer;
+    text-decoration: none;
 }
 
 .photographer_header_name {

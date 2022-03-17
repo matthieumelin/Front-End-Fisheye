@@ -92,6 +92,8 @@ const init = async () => {
 
       option.classList.add("filters_select_option");
 
+      option.setAttribute("aria-label", `Trier par ${filter},`);
+
       option.value = filter;
       option.textContent = filter;
 
@@ -103,6 +105,10 @@ const init = async () => {
     select.classList.add("filters_select");
 
     title.setAttribute("for", select.className);
+    title.setAttribute("aria-selected", "Menu déroulant qui sert à trier les medias par popularité, date ou par ordre alphabétique,.")
+    title.setAttribute("aria-label", "Menu déroulant qui sert à trier les medias par popularité, date ou par ordre alphabétique,.")
+
+    select.setAttribute("tabindex", 1);
 
     select.addEventListener("change", (event) =>
       createPictures(event.target.value)
@@ -169,7 +175,11 @@ const init = async () => {
               .split(" ")[0]
               .replace("-", " ")}/${!media.image ? media.video : media.image}`
           );
-          cardAboutLikes.setAttribute("aria-label", "likes");
+
+          cardAbout.setAttribute("aria-hidden", true);
+          cardAboutLikes.setAttribute("aria-label", "Nombre de likes");
+          cardImage.setAttribute("tabindex", 1);
+          cardImage.setAttribute("role", "img");
 
           cardAboutName.textContent = media.title;
           cardAboutLikesCount.textContent = media.likes;

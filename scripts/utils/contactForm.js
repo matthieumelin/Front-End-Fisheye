@@ -43,9 +43,11 @@ const validate = (event) => {
         if (error.active) {
           element.style.display = "block";
           element.parentNode.setAttribute("data-error-visible", true);
+          element.parentNode.childNodes[3].setAttribute("aria-invalid", true);
         } else {
           element.style.display = "none";
           element.parentNode.setAttribute("data-error-visible", false);
+          element.parentNode.childNodes[3].setAttribute("aria-invalid", false);
         }
       }
     });
