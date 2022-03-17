@@ -1,10 +1,16 @@
+/**
+ * It creates a new photographer object.
+ * @returns A function that returns a photographer object.
+ */
 const photographerFactory = (data) => {
   const { id, name, portrait, city, country, tagline, price } = data;
-
   const picture = `assets/photographers/${portrait}`;
-
+  
+  /**
+   * It creates a DOM element for a photographer card.
+   * @returns A DOM element.
+   */
   function getUserCardDOM() {
-    // Création des éléments
     const photographer = document.createElement("article");
     const header = document.createElement("div");
     const headerImage = document.createElement("img");
@@ -13,7 +19,6 @@ const photographerFactory = (data) => {
     const slogan = document.createElement("p");
     const pricePerDay = document.createElement("p");
 
-    // Ajout des classes CSS personnalisées
     photographer.classList.add("photographer");
     header.classList.add("photographer_header");
     headerImage.classList.add("photographer_header_image");
@@ -32,7 +37,6 @@ const photographerFactory = (data) => {
     slogan.textContent = tagline;
     pricePerDay.textContent = `${price}€/heure`;
 
-    // Ajout de tous les éléments au photographer
     photographer.appendChild(header);
     photographer.appendChild(localization);
     photographer.appendChild(slogan);
