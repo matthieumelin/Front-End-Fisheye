@@ -1,3 +1,6 @@
+const form = document.getElementById("contact_form");
+const errors = new Array();
+
 /**
  * It validates the form and displays the errors.
  */
@@ -8,8 +11,6 @@ const validate = (event) => {
   const lastName = document.getElementById("last").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
-
-  const errors = new Array();
 
   /* It checks if the value is not null and has a minimum length of 2. */
   if (!firstName || firstName.length < 2)
@@ -54,7 +55,6 @@ const validate = (event) => {
   }
 };
 
-const form = document.getElementById("contact_form");
 form.addEventListener("submit", validate);
 
 /**
@@ -84,5 +84,19 @@ const closeModal = () => {
   const modal = document.getElementById("contact_modal");
   if (modal) {
     modal.style.display = "none";
+    /* It resets the form. */
+    form.reset();
+    /* It checks if the error is active and displays it. */
+    errors.forEach((error) => {
+      /* It checks if the error is active and displays it. */
+      const element = document.getElementById(`${error.id}_error`);
+      if (element != null) {
+        if (error.active) {
+          element.style.display = "none";
+          element.parentNode.setAttribute("data-error-visible", false);
+          element.parentNode.childNodes[3].setAttribute("aria-invalid", false);
+        }
+      }
+    });
   }
 };
