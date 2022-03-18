@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <title>Fisheye - photographe</title>
 </head>
 
@@ -19,7 +20,7 @@
     <main id="main">
         <div class="photograph_header">
             <div class="photograph_header_content"></div>
-            <button class="contact_button" onclick="displayModal()" role="button" aria-label="Contacter le photographe,." tabindex="1">Contactez-moi</button>
+            <button class="contact_button" onclick="displayModal()" aria-label="Contacter le photographe,." tabindex="1">Contactez-moi</button>
         </div>
         <div class="photograph_infos" aria-label="Informations sur la réputation et les tarifs du photographe,.">
             <p class="photograph_infos_likes" aria-label="Nombre de like du photographe,."></p>
@@ -44,27 +45,27 @@
         <div class="modal">
             <div class="modal_header">
                 <h2 class="modal_header_title">Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()" class="modal_header_close " />
+                <img src="assets/icons/close.svg" onclick="closeModal()" class="modal_header_close" alt="Fermer le modal" />
             </div>
             <form id="contact_form" class="form" method="post">
                 <div class="form_data">
                     <label id="firstName-label" for="first" class="form_label">Prénom</label>
-                    <input type="text" name="first" id="first" class="form_input" tabindex="1" aria-required="true" aria-labelledby="firstName-label" aria-errormessage="Veuillez entrer 2 caractères ou plus pour le champ du prénom." aria-invalid="false">
+                    <input type="text" name="first" id="first" class="form_input" tabindex="1" aria-required="true" aria-labelledby="firstName-label" aria-errormessage="first_error" aria-invalid="false">
                     <div id="first_error" class="error">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</div>
                 </div>
                 <div class="form_data">
                     <label id="lastName-label" for="last" class="form_label">Nom</label>
-                    <input type="text" name="last" id="last" class="form_input" tabindex="1" aria-required="true" aria-labelledby="lastName-label" aria-errormessage="Veuillez entrer 2 caractères ou plus pour le champ du nom." aria-invalid="false">
+                    <input type="text" name="last" id="last" class="form_input" tabindex="1" aria-required="true" aria-labelledby="lastName-label" aria-errormessage="last_error" aria-invalid="false">
                     <div id="last_error" class="error">Veuillez entrer 2 caractères ou plus pour le champ du nom.</div>
                 </div>
                 <div class="form_data">
                     <label id="email-label" for="email" class="form_label">Email</label>
-                    <input type="email" name="email" id="email" class="form_input" tabindex="1" aria-required="true" aria-labelledby="email-label" aria-errormessage="Vous devez entrer votre email." aria-invalid="false">
+                    <input type="email" name="email" id="email" class="form_input" tabindex="1" aria-required="true" aria-labelledby="email-label" aria-errormessage="email_error" aria-invalid="false">
                     <div id="email_error" class="error">Vous devez entrer votre email.</div>
                 </div>
                 <div class="form_data">
                     <label id="message-label" for="message" class="form_label">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="form_textarea" tabindex="1" aria-required="true" aria-labelledby="message-label" aria-errormessage="Vous devez entrer votre message" aria-invalid="false"></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10" class="form_textarea" tabindex="1" aria-required="true" aria-labelledby="message-label" aria-errormessage="message_error" aria-invalid="false"></textarea>
                     <div id="message_error" class="error">Vous devez entrer votre message.</div>
                 </div>
                 <button type="submit" id="contact_button" class="contact_button" aria-label="Envoyer" tabindex="1" role="button">Envoyer</button>
