@@ -240,7 +240,7 @@ const getMedias = async (photograph) => {
  * resulting value.
  */
 const getPhotographers = async () => {
-  const photographers = await fetch("../../data/photographers.json").then(
+  const photographers = await fetch("./data/photographers.json").then(
     (response) => response.json()
   );
   return {
