@@ -222,7 +222,7 @@ const init = async () => {
  * @returns An object with a key of `medias` and a value of an array of media objects.
  */
 const getMedias = async (photograph) => {
-  const data = await fetch("../../data/photographers.json").then((response) =>
+  const data = await fetch("./data/photographers.json").then((response) =>
     response.json()
   );
   const medias = data.media.filter(

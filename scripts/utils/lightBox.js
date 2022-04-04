@@ -20,7 +20,7 @@ const openLightBox = async (medias, photograph, currentMedia) => {
     ".ligthbox_content_media_container_media_title"
   );
   const mediaClose = document.querySelector(".lightbox_content_close");
-  const mediaPath = `../assets/images/${photograph.name
+  const mediaPath = `./assets/images/${photograph.name
     .split(" ")[0]
     .replace("-", " ")}/${
     !currentMedia.image ? currentMedia.video : currentMedia.image
@@ -65,7 +65,7 @@ function when the user clicks the close button. */
    */
   const updateMedia = (newMedia) => {
     if (newMedia) {
-      const mediaPath = `../assets/images/${photograph.name
+      const mediaPath = `./assets/images/${photograph.name
         .split(" ")[0]
         .replace("-", " ")}/${
         !newMedia.image ? newMedia.video : newMedia.image
