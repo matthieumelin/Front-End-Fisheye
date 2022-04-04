@@ -33,7 +33,7 @@ const photographerFactory = (data) => {
 
 
     photographer.setAttribute("aria-label", `Carte de ${name},.`);
-    header.setAttribute("href", `/photographer.html?id=${id}`);
+    header.setAttribute("href", `../photographer.html?id=${id}`);
     header.setAttribute("role", "banner");
     header.setAttribute("aria-label", `Lien vers la page de ${name},.`);
     header.setAttribute("tabindex", index);
