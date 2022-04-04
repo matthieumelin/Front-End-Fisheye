@@ -171,7 +171,7 @@ const init = async () => {
 
           cardImage.setAttribute(
             "src",
-            `../assets/images/${photograph.name
+            `./assets/images/${photograph.name
               .split(" ")[0]
               .replace("-", " ")}/${!media.image ? media.video : media.image}`
           );
