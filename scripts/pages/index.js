@@ -4,7 +4,7 @@
  * array of objects. Each object represents a photographer.
  */
 const getPhotographers = async () => {
-  const photographers = await fetch("data/photographers.json").then(
+  const photographers = await fetch("../data/photographers.json").then(
     (response) => response.json()
   );
   return {
